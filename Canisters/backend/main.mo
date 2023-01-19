@@ -7,6 +7,8 @@ import Array "mo:base/Array";
 import Iter "mo:base/Iter";
 import Cycles "mo:base/ExperimentalCycles";
 import Result "mo:base/Result";
+import Bool "mo:base/Bool";
+
 
 shared ({ caller = owner }) actor class Backend() = {
   type Err = {
@@ -16,6 +18,9 @@ shared ({ caller = owner }) actor class Backend() = {
     #ProposalNotFound;
   };
 
+  type Admin = {
+    adminUser : Principal;
+  };
   stable var creator : Principal = owner;
 
   public type Proposal = Proposals.Proposal;
@@ -27,6 +32,9 @@ shared ({ caller = owner }) actor class Backend() = {
   stable var userArray : [Principal] = [];
   stable var userCounter = 0;
   let price = 1_000_000_000;
+
+  stable var adminsArray : [Principal] = [];
+  stable var adminsCounter = 0;
 
   // public shared ({ caller = user }) func createProposal( proposal : Proposal ) : async Result.Result<Text, Err> {
 
@@ -100,6 +108,16 @@ shared ({ caller = owner }) actor class Backend() = {
       };
     };
   };
+
+  public shared ({caller = admin}) func deleteProposal(id : Nat) : async Result.Result<Text, Err> {
+    var isAdmin : ?Principal = Array.find<Principal>(adminsArray, func x = x == admin);
+    if(isAdmin!=null) {
+      proposalsMap.delete(id);
+      return #ok"Propuesta borrada";
+    } else {
+      return #err(#Unauthorized);
+    }
+  };  
   
   system func preupgrade() {
     proposalsArray := Iter.toArray<Proposal>(proposalsMap.vals());
