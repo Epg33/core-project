@@ -34,4 +34,4 @@ module Http {
         body  : Blob;
         token : ?StreamingCallbackToken;
     };
-}
+};
