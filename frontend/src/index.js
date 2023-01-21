@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {ContextProvider} from './context/Context'
+import Context from './context/Context'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ContextProvider>
+    <Context>
       <App />
-    </ContextProvider>
+    </Context>
   </React.StrictMode>
 );
 

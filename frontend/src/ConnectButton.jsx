@@ -1,13 +1,13 @@
 import React from 'react'
 import { useContext } from 'react'
 import { useState } from 'react'
-import {idlFactory} from './Canisters/backend/backend.did.js'
+import {idlFactory} from './.dfx/ic/canisters/backend/backend.did.js'
 import { ContextProvider } from './context/Context.jsx'
 
 const ConnectButton = () => {
   const {setLoged, setDaoAgent} = useContext(ContextProvider)
   const handleClick = async (e) => {
-    const canisterId = '';
+    const canisterId = 'e3hsb-taaaa-aaaag-abesa-cai';
     const principalKey = await window.ic.plug.requestConnect({
       whiteList: [canisterId]
     });

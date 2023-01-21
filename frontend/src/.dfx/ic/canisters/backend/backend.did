@@ -1,0 +1,37 @@
+type Result = 
+ variant {
+   err: Err;
+   ok: Ok;
+ };
+type Proposal = 
+ record {
+   body: text;
+   passed: bool;
+   user: principal;
+   voteCount: record {
+                no: nat;
+                yes: nat;
+              };
+ };
+type Ok = 
+ variant {
+   Completed;
+   Loged: bool;
+ };
+type Err = 
+ variant {
+   Anonymus;
+   NotEnoughMBT;
+   ProposalNotFound;
+   Unauthorized;
+ };
+type Backend = 
+ service {
+   createProposal: (Proposal) -> (Result);
+   deleteProposal: (nat) -> (Result);
+   getProposal: (nat) -> (opt Proposal) query;
+   getProposals: () -> (vec Proposal) query;
+   loginUser: () -> (Result);
+   voteProposal: (nat, bool) -> (Result);
+ };
+service : () -> Backend

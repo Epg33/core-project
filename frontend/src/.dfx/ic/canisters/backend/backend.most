@@ -1,0 +1,16 @@
+// Version: 1.0.0
+type Proposal =
+  {
+    body : Text;
+    passed : Bool;
+    user : Principal;
+    voteCount : {no : Nat; yes : Nat}
+  };
+type Proposal__1 = Proposal;
+actor {
+  stable var creator : Principal;
+  stable var proposalsArray : [(Nat, Proposal__1)];
+  stable var proposalsCount : Nat;
+  stable var userArray : [Principal];
+  stable var userCounter : Nat
+};

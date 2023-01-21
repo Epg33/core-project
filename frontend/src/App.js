@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ConnectButton from "./ConnectButton";
+import Context from "./context/Context";
 
 const Nav = lazy(()=>import('./Nav'))
 const Home = lazy(()=>import('./pages/Home'));
@@ -11,6 +12,7 @@ const Vote = lazy(()=>import('./pages/Vote'));
 function App() {
   return (
     <>
+      <Context>
       <main className='h-screen w-full flex justify-start gap-4 bg-zinc-900 text-slate-100'>
         <ConnectButton />
         <Router>
@@ -25,6 +27,7 @@ function App() {
           </Suspense>
         </Router>
       </main>
+      </Context>
     </>
   );
 }
