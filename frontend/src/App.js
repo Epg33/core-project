@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ConnectButton from "./ConnectButton";
 
 const Nav = lazy(()=>import('./Nav'))
 const Home = lazy(()=>import('./pages/Home'));
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <main className='h-screen w-full flex justify-start gap-4 bg-zinc-900 text-slate-100'>
+        <ConnectButton />
         <Router>
           <Suspense fallback={<h1>Loading...</h1>}>
             <Nav />
