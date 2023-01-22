@@ -17,7 +17,7 @@ export const idlFactory = ({ IDL }) => {
     'createProposal' : IDL.Func([Proposal], [Result], []),
     'deleteProposal' : IDL.Func([IDL.Nat], [Result], []),
     'getProposal' : IDL.Func([IDL.Nat], [IDL.Opt(Proposal)], ['query']),
-    'getProposals' : IDL.Func([], [IDL.Vec(Proposal)], ['query']),
+    'getProposals' : IDL.Func([], [IDL.Vec(IDL.Tuple(IDL.Nat, Proposal))], ['query']),
     'loginUser' : IDL.Func([], [Result], []),
     'voteProposal' : IDL.Func([IDL.Nat, IDL.Bool], [Result], []),
   });
