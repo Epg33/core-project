@@ -1,6 +1,24 @@
+import { useEffect } from "react";
+import { useState } from "react"
 import { DiReact } from "react-icons/di"
+import { idlFactory } from "../.dfx/ic/canisters/webpage/webpage.did.js"
 
 const Home = () => {
+  // const [text, setText] = useState(null);
+
+  // const getText = async () => {
+  //   const x = idlFactory.http_request({
+  //     body: Blob;
+  //     headers: [HeaderField];
+  //     method: Text;
+  //     url: Text;
+  //   });
+  // }
+
+  // useEffect(()=>{
+  //   getText();
+  // }, [])
+
   return (
     <>
       <section className='h-screen w-full pl-[8.3333333%] grid place-content-center'>
