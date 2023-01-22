@@ -1,3 +1,5 @@
+/*global BigInt*/
+
 import React, { useState, useEffect, useContext  } from 'react'
 import { ContextProvider } from '../context/Context';
 
@@ -23,7 +25,7 @@ const View = () => {
               <h2 className='text-3xl'>{index+1}</h2>
               {/* <p>{prop.user}</p> */}
               <p>Change the website text to: {prop.body}</p>
-              <p>Yes: {prop.voteCount.yes}, No: {prop.voteCount.no}</p>
+              <p>Yes: {BigInt(prop.voteCount.yes).toString()}, No: {BigInt(prop.voteCount.no).toString()}</p>
             </div>
           })
         }

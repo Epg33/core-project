@@ -139,8 +139,8 @@ shared ({ caller = owner }) actor class Backend() = {
     }
   };  
 
-  public query func getProposals() : async [Proposal] {
-    return Iter.toArray<Proposal>(proposalsMap.vals());
+  public query func getProposals() : async [(Nat,Proposal)] {
+    return Iter.toArray<(Nat, Proposal)>(proposalsMap.entries());
   };
   
   public query func getProposal(id: Nat) : async ?Proposal {
